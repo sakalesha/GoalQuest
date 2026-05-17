@@ -1,0 +1,4 @@
+﻿--- Reading AtomQuest_Hackathon_1.0_Problem_Statement_.pdf ---
+Error reading AtomQuest_Hackathon_1.0_Problem_Statement_.pdf: 'charmap' codec can't encode character '\u25e6' in position 1135: character maps to <undefined>
+--- Reading AtomQuest_Comprehensive _Analysis_Report.pdf ---
+Error reading AtomQuest_Comprehensive _Analysis_Report.pdf: 'charmap' codec can't encode character '\u2192' in position 2861: character maps to <undefined>

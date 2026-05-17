@@ -1,0 +1,848 @@
+--- Reading AtomQuest_Hackathon_1.0_Problem_Statement_.pdf ---
+ 
+ATOMQUEST HACKATHON 1.0 
+Problem Statement 
+In-House Goal Setting & Tracking Portal 
+1.  Background & Problem Context 
+Organizations that rely on manual or fragmented goal-tracking methods often struggle with 
+alignment, visibility, and accountability. Spreadsheets, emails, and offline review cycles create blind 
+spots — managers cannot monitor team progress in real time, employees lack clarity on how their 
+work connects to organizational priorities, and HR teams are left piecing together data at appraisal 
+time. 
+ 
+The challenge is to build a structured, digital Goal Setting & Tracking Portal that eliminates these 
+pain points. The system must support the full lifecycle of employee goals — from creation and 
+alignment to quarterly check-ins and performance visibility — while being intuitive, reliable, and 
+audit-ready. 
+ 
+ 
+2.  What You Need to Build 
+Participants are required to design and develop a functional web-based portal that fulfils the 
+following core requirements. 
+ 
+2.1  Phase 1 — Goal Creation & Approval (Must-Have) 
+• Employee-facing interface to create and submit a Goal Sheet 
+◦ Select a Thrust Area and define Goal Title / Description 
+◦ Assign Unit of Measurement (UoM): Numeric, %, Timeline, or Zero-based 
+◦ Set Targets and Weightage per goal 
+• System-enforced validation rules: 
+◦ Total weightage across all goals must equal 100% 
+◦ Minimum weightage per individual goal: 10% 
+◦ Maximum number of goals per employee: 8 
+• Manager (L1) Approval Workflow: 
+◦ Review submitted goals; ability to edit targets / weightages inline or return for rework 
+◦ On approval, goals are locked — no further edits without Admin intervention 
+• Shared Goals functionality: 
+◦ Admin or manager can push a departmental KPI to multiple employees 
+◦ Recipients may adjust weightage only; Goal Title and Target are read-only 
+◦ Achievement updates by the primary owner sync across all linked goal sheets  
+ 
+ 
+2.2  Phase 2 — Achievement Tracking & Quarterly Check-ins (Must-Have) 
+• Quarterly update interface for employees to log Actual Achievement against Planned 
+Targets 
+• Status selection per goal: Not Started / On Track / Completed 
+• Manager Check-in module: 
+◦ View Planned vs. Achievement data for each team member 
+◦ Add a structured Check-in Comment to document the discussion 
+• System-computed progress scores (for tracking only, not ratings): 
+ 
+UoM Type Description Formula 
+Min (Numeric / %) Higher is better — e.g., Sales 
+Revenue 
+Achievement ÷ Target 
+Max (Numeric / %) Lower is better — e.g., TAT, 
+Cost 
+Target ÷ Achievement 
+Timeline Date-based completion Completion date vs. Deadline 
+Zero Zero = Success — e.g., Safety 
+incidents 
+If 0 → 100%, else 0% 
+ 
+2.3  Check-in Schedule 
+The portal must enforce the following quarterly windows for achievement capture: 
+ 
+Period Window Opens Action 
+Phase 1 — Goal Setting 1st May Goal Creation, Submission & Approval 
+Q1 Check-in July Progress Update — Planned vs. 
+Actual 
+Q2 Check-in October Progress Update — Planned vs. 
+Actual 
+Q3 Check-in January Progress Update — Planned vs. 
+Actual 
+Q4 / Annual March / April Final Achievement Capture 
+ 
+ 
+3.  User Roles & Personas 
+The portal must support three distinct user roles, each with clearly differentiated access and 
+capabilities: 
+ 
+ 
+ 
+Role Responsibilities Required System Capabilities 
+Employee Draft goals; enter quarterly 
+achievement; update progress status 
+Create & edit goals pre-submission; 
+view locked goals; input actuals 
+Manager (L1) Review & approve goals; conduct 
+quarterly check-ins; log feedback 
+Team dashboard; inline editing during 
+approval; comment / feedback logs 
+Admin / HR Configure cycles; manage org 
+hierarchy; oversee completion rates 
+Cycle management; exception 
+handling; audit logs; goal unlock 
+capability 
+ 
+ 
+4.  Reporting & Governance Requirements 
+• Achievement Report: Exportable (CSV / Excel) showing Planned Target vs. Actual 
+Achievement for all employees 
+• Completion Dashboard: Real-time view of which employees and managers have completed 
+quarterly check-ins 
+• Audit Trail: System must log all changes made to goals after the lock date — capturing who 
+changed what and when 
+ 
+ 
+5.  Good-to-Have Features (Bonus Points) 
+While not mandatory, the following enhancements will be positively evaluated and can differentiate 
+your solution. Teams that implement any of these will earn additional credit under the evaluation 
+criteria. 
+ 
+5.1  Microsoft Entra ID (Azure AD) Integration 
+• Single Sign-On (SSO) for employees and managers via Microsoft Entra ID 
+• Automatic org hierarchy sync — reporting lines derived from Azure AD attributes 
+• Role assignment mapped from Azure AD group membership 
+ 
+5.2  Email & Microsoft Teams Integration 
+• Automated email notifications for key events: goal submission, approval, rejection, check-in 
+reminders 
+• Teams bot or adaptive card notifications for managers when a team member submits or 
+updates goals 
+• Deep-link support so users can navigate directly from a Teams notification to the relevant 
+goal sheet 
+ 
+5.3  Escalation Module (Rule-Based) 
+ 
+• Configurable escalation rules triggered by defined conditions, for example: 
+◦ Employee has not submitted goals within N days of cycle open 
+◦ Manager has not approved goals within N days of submission 
+◦ Quarterly check-in not completed within the active window 
+• Escalation chain: auto-notification to employee → manager → skip-level / HR after defined 
+intervals 
+• Escalation log visible to Admin / HR for tracking and resolution 
+ 
+5.4  Analytics Module 
+• Quarter-on-Quarter (QoQ) goal achievement trends at individual, team, and department 
+levels 
+• Heatmaps or progress charts showing completion rates across the organization 
+• Goal distribution analysis — breakdown by Thrust Area, UoM type, and status 
+• Manager effectiveness dashboard — comparison of check-in completion rates across L1 
+managers 
+ 
+ 
+6.  Evaluation Parameters & Scoring 
+Submissions will be judged by a panel against the following criteria. Each parameter carries equal 
+weight unless otherwise announced on the day: 
+ 
+# Parameter What Evaluators Will Look For 
+1 Functionality of the Portal Does the portal work end-to-end? Can an employee create 
+goals, a manager approve them, and check-ins be 
+completed without errors? 
+2 Adherence to BRD Are all Phase 1 and Phase 2 requirements implemented? 
+Are validation rules (weightage = 100%, max 8 goals, min 
+10%) correctly enforced? 
+3 User Friendliness Is the UI intuitive for non-technical users? Are workflows 
+logical, error messages helpful, and the experience 
+consistent across roles? 
+4 Presence of Bugs Does the portal behave predictably under normal and edge-
+case inputs? Are there no broken flows, data 
+inconsistencies, or unhandled errors? 
+5 Good-to-Have Features Has the team implemented any bonus features from Section 
+5? Depth and quality of implementation will be assessed. 
+6 Cost Optimisation Is the solution architected efficiently? Evaluators will 
+consider infrastructure choices, API call efficiency, caching 
+strategies, and hosting cost awareness. 
+ 
+ 
+ 
+7.  Constraints & Ground Rules 
+• Participants may use any technology stack of their choice (web frameworks, databases, 
+cloud services) 
+• The portal must be accessible via a web browser — no desktop-only applications 
+• A working demo with at least one complete user journey per role (Employee, 
+Manager, Admin) must be presented 
+• Code must be version-controlled and the repository link submitted before the deadline 
+• Participants must provide a brief architecture diagram explaining their technology and 
+hosting choices 
+ 
+ 
+8.  Submission Deliverables 
+1. Live / hosted demo URL of the portal 
+2. Source code repository (GitHub / GitLab / Bitbucket) 
+3. Architecture diagram (PDF or image) 
+4. Login credentials of the 3 roles (Employee, Manager, Admin) or option to switch between 
+user journeys 
+ 
+ 
+--- Reading AtomQuest_Comprehensive _Analysis_Report.pdf ---
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 1 
+ 
+ 
+ 
+ 
+ATOMQUEST HACKATHON 1.0 
+Goal Setting & Tracking Portal 
+ 
+Comprehensive Analysis Report 
+Problem Statement · Architecture · Prioritization · Risk Register 
+ 
+ 
+ 
+ 
+ 
+ 
+MERN Stack Implementation Guide 
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 2 
+1. Must-Have vs. Good-to-Have Requirements 
+A systematic breakdown of every requirement extracted from Sections 2–5 of the BRD, classified by mandatory 
+vs. bonus status and internal priority for the hackathon submission. 
+ 
+1.1 Must-Have Requirements (Phases 1 & 2) 
+Feature Requirement Detail Priority 
+Phase 1 – Goal 
+Creation 
+Employee creates goal sheet: Thrust Area, Title, Description HIGH 
+UoM Assignment Choose from Numeric, %, Timeline, Zero-based per goal HIGH 
+Weightage 
+Validation 
+Total = 100%, min 10%/goal, max 8 goals per employee CRITICAL 
+Manager L1 
+Approval 
+Review, inline edit targets/weightage, approve or return HIGH 
+Goal Locking Post-approval lock — no edits without Admin override HIGH 
+Shared Goals Admin/Manager pushes departmental KPI; recipients edit 
+weightage only 
+HIGH 
+Achievement Sync Primary owner updates sync across all linked goal sheets HIGH 
+Phase 2 – Check-ins Quarterly actual vs. planned input; status: Not Started / On 
+Track / Completed 
+HIGH 
+Manager Check-in View team progress; add structured comment/feedback HIGH 
+UoM Score 
+Formulas 
+System-computed: Min, Max, Timeline, Zero — 4 distinct 
+formulas 
+CRITICAL 
+Quarterly Schedule Time-gated windows: May, July, Oct, Jan, Mar/Apr HIGH 
+Achievement Report CSV/Excel export: planned vs. actual for all employees HIGH 
+Completion 
+Dashboard 
+Real-time check-in completion by employee and manager MEDIUM 
+Audit Trail Log all post-lock changes: who, what, when HIGH 
+Role-based Access Three roles: Employee, Manager (L1), Admin/HR CRITICAL 
+Demo Journeys At least one complete journey per role must be demo-ready CRITICAL 
+ 
+Legend 
+CRITICAL = Failing this likely fails evaluation | HIGH = Core BRD requirement | MEDIUM = Expected 
+but forgettable | LOW = Nice polish 
+ 
+1.2 Good-to-Have Requirements (Section 5 Bonus) 
+Bonus Feature Description Value 
+Azure AD / Entra 
+SSO 
+Single Sign-On + org hierarchy sync + role from group 
+membership 
+MEDIUM 
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 3 
+Bonus Feature Description Value 
+Email Notifications Auto emails: submission, approval, rejection, check-in reminders MEDIUM 
+Teams Bot / Cards Adaptive card notifications + deep-link to goal sheet LOW 
+Escalation Module Rule-based escalation chain: employee → manager → HR MEDIUM 
+QoQ Analytics Quarter-on-quarter trends at individual, team, department level MEDIUM 
+Heatmaps / Charts Completion rate visualizations across org LOW 
+Goal Distribution Breakdown by Thrust Area, UoM type, status LOW 
+Manager 
+Effectiveness 
+Check-in completion comparison across L1 managers LOW 
+ 
+Bonus Strategy 
+Recommended: Build Escalation Module + Email Notifications first (highest evaluator impact). 
+Analytics charts are visually impressive in demos. Skip Teams Bot unless time permits.  
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 4 
+2. Validation Rules & UoM Formulas 
+2.1 Critical Validation Rules 
+These rules must be enforced server-side. Judges will test edge cases explicitly. 
+ 
+Rule Constraint Risk if Missed 
+Total Weightage Must exactly equal 100% across 
+all goals for a single employee 
+Goals cannot be submitted / 
+approved — system breaks 
+Minimum Goal Weightage Each individual goal must carry 
+at least 10% 
+Silent data corruption if validation 
+bypassed 
+Maximum Goals per 
+Employee 
+No more than 8 goals per 
+employee per cycle 
+Performance degradation + BRD 
+violation 
+Shared Goal Restriction Recipients can only adjust 
+weightage; Title and Target are 
+read-only 
+Data integrity failure across shared 
+goal pool 
+Post-Approval Lock Goals locked after manager 
+approval; edits only via Admin 
+override 
+Audit trail becomes meaningless 
+without this 
+Audit Logging Every post-lock change must 
+record actor, field, old value, new 
+value, timestamp 
+Cannot retrofit easily — design 
+from Day 1 
+ 
+⚠ Server-Side Enforcement is Non-Negotiable 
+Never rely solely on frontend validation. Evaluators may use Postman or browser DevTools to bypass 
+UI checks. All validations must live in Express middleware or Mongoose validators.  
+ 
+2.2 The Four UoM Formulas — Detailed Breakdown 
+Each formula computes a progress score (0%–100%) for tracking. These are not ratings — they are system 
+metrics only. 
+ 
+UoM Type When to Use Formula Edge Cases & Notes 
+Min (Numeric 
+/ %) 
+Higher is better — 
+e.g., Sales Revenue, 
+Units Sold 
+Achievement ÷ 
+Target 
+Cap at 100% (overachievement). 
+Guard against Target = 0 (division by 
+zero). Result can exceed 1 — clamp 
+to 100%. 
+Max (Numeric 
+/ %) 
+Lower is better — 
+e.g., TAT, Cost, Error 
+Rate 
+Target ÷ 
+Achievement 
+Guard against Achievement = 0. If 
+achievement = 0, treat as 100% (goal 
+fully met). Cap result at 100%. 
+Timeline Date-based delivery 
+— e.g., Launch by Q3 
+Completion Date 
+vs. Deadline 
+If completed on/before deadline → 
+100%. If completed late → partial or 
+0%. If not yet complete → show days 
+remaining. Store dates as ISO UTC. 
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 5 
+UoM Type When to Use Formula Edge Cases & Notes 
+Zero-Based Zero = success — 
+e.g., Safety incidents, 
+Critical defects 
+If 0 → 100%, else 
+0% 
+Binary outcome only. No partial 
+credit. Validate that target is explicitly 
+set to 0 in this UoM type. Input must 
+be a non-negative integer. 
+ 
+Implementation Tip 
+Create a single utility function computeScore(uomType, target, achievement, deadline, 
+completionDate) that handles all four cases with proper guards. Unit-test every edge case before the 
+demo. 
+ 
+2.3 Quarterly Time-Gate Schedule 
+The portal must enforce temporal access controls — opening and potentially closing windows per the schedule 
+below. 
+ 
+Phase Window Opens Allowed Action Implementation Note 
+Goal Setting 1st May Create, Submit, Approve 
+goals 
+Store cycle config in DB; 
+Admin controls open/close 
+dates 
+Q1 Check-in July Progress Update — 
+Planned vs. Actual 
+Only approved goals visible; 
+employees enter actuals 
+Q2 Check-in October Progress Update — 
+Planned vs. Actual 
+Cumulative YTD or period-
+specific — clarify in UI 
+Q3 Check-in January Progress Update — 
+Planned vs. Actual 
+Year-end approaching; 
+escalation rules most relevant 
+here 
+Q4 / Annual March / April Final Achievement Capture Freeze all actuals; trigger 
+report generation 
+ 
+Time-Gating Strategy 
+Store a CycleConfig document in MongoDB with { phase, openDate, closeDate, status }. An Admin 
+panel controls these dates. All goal/check-in routes check the active cycle phase before allowing 
+writes. For the hackathon demo, allow Admin to manually trigger phase transitions. 
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 6 
+3. Evaluation Criteria Analysis 
+Section 6 of the BRD lists six equally-weighted evaluation parameters. The table below re-ranks them by realistic 
+hackathon risk and provides a tactical response for each. 
+ 
+# Parameter Risk Level What Judges Specifically 
+Test 
+Tactical Response 
+1 Functionality of 
+Portal 
+🔴 VERY 
+HIGH 
+End-to-end journey: create 
+goal → approve → check-in, 
+all without errors 
+Smoke-test every user 
+journey 30 min before 
+demo. Have seeded 
+demo data ready. 
+2 BRD Adherence 🔴 VERY 
+HIGH 
+Weightage = 100%, max 8 
+goals, min 10%, shared goal 
+read-only fields, audit log 
+Build a self-checklist 
+against BRD. Test each 
+validation with bad 
+inputs. 
+3 User Friendliness 🟡 HIGH Intuitive UI, helpful error 
+messages, consistent 
+experience across 3 roles 
+Use a component library 
+(Ant Design / MUI). Write 
+descriptive error 
+messages, not codes. 
+4 Absence of Bugs 🟡 HIGH Edge cases: 0 achievement, 
+overachievement, division by 
+zero, empty states 
+Write unit tests for UoM 
+formulas. Test with 
+boundary inputs 
+explicitly. 
+5 Good-to-Have 
+Features 
+🟢 MEDIUM Depth and quality of bonus 
+features, not just presence 
+Build 1-2 bonus features 
+well rather than 4 half-
+baked ones. 
+6 Cost Optimisation 🔵 LOWER Infrastructure choices, 
+caching, API efficiency, 
+hosting awareness 
+Document your hosting 
+choices and cost 
+rationale in the 
+architecture diagram. 
+ 
+Time Allocation Recommendation 
+Spend 70% of development time on core must-have functionality (parameters 1–4). Allocate 20% to 
+polish and bug-fixing. Reserve only 10% for bonus features unless core is fully complete with buffer.  
+ 
+3.1 Quick Wins & High-Risk Gaps 
+• Quick Win: Pre-seed the demo database with realistic data for all 3 roles — avoids awkward manual entry 
+during the live presentation. 
+• Quick Win: Show the audit log table live during the Admin demo — it is a differentiator few teams 
+implement. 
+• Quick Win: Display real-time progress scores using UoM formulas in the manager check-in view — visually 
+impressive. 
+• High Risk: Failing to enforce weightage = 100% server-side — evaluators will test this with direct API calls. 
+• High Risk: Broken shared goal sync — if primary owner updates and linked sheets do not reflect it, that is a 
+critical BRD violation. 
+• High Risk: No working CSV/Excel export — this is explicitly listed in Section 4 and is commonly missed. 
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 7 
+4. User Roles & Flows 
+4.1 Role Capability Matrix 
+Capability Employee Manager (L1) Admin / HR 
+Create / Edit Goals (pre-
+submission) 
+✅ ❌ ❌ 
+Submit Goal Sheet ✅ ❌ ❌ 
+View Own Locked Goals ✅ (read-only) ✅ ✅ 
+Enter Quarterly Actuals ✅ ❌ ❌ 
+Update Goal Status ✅ ❌ ❌ 
+Review Team Goals (approval) ❌ ✅ ✅ 
+Inline Edit Targets / Weightages ❌ ✅ (during 
+approval) 
+✅ 
+Approve Goals ❌ ✅ ✅ 
+Return Goals for Rework ❌ ✅ ❌ 
+Add Check-in Comments ❌ ✅ ❌ 
+Push Shared Goals ❌ ✅ ✅ 
+Unlock Goals Post-Approval ❌ ❌ ✅ 
+Configure Cycle Dates ❌ ❌ ✅ 
+Manage Org Hierarchy ❌ ❌ ✅ 
+View Completion Dashboard ❌ ✅ (own team) ✅ (all) 
+Export Achievement Report ❌ ✅ (own team) ✅ (all) 
+View Audit Trail ❌ ❌ ✅ 
+Exception Handling ❌ ❌ ✅ 
+ 
+4.2 User Flow — Goal Lifecycle (Sequence) 
+The following sequence describes the canonical flow from goal creation to final annual check -in. 
+ 
+Step Actor Action System State After 
+1 Admin Opens Goal Setting cycle (sets start/end dates 
+in Admin panel) 
+Cycle status: OPEN; 
+employees can access 
+goal creation 
+2 Employee Creates goals: selects Thrust Area, writes Title 
++ Description, sets UoM, Target, Weightage 
+Goals in DRAFT status; 
+weightage validated on 
+each save 
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 8 
+Step Actor Action System State After 
+3 Employee Submits Goal Sheet (final weightage must = 
+100%, ≤ 8 goals) 
+Goals move to 
+SUBMITTED status; 
+Manager notified 
+4 Manager Reviews submitted goals; optionally edits 
+Target or Weightage inline 
+Goals remain in 
+SUBMITTED; edits 
+logged 
+5a Manager Approves Goal Sheet Goals LOCKED; no 
+further employee edits; 
+audit log entry created 
+5b Manager Returns for rework with comment Goals revert to DRAFT; 
+employee notified 
+6 Admin Optionally pushes Shared Goal to multiple 
+employees 
+Shared goal added to 
+recipients' sheets; 
+Title/Target read-only 
+7 Admin Opens Q1 Check-in window (July) Cycle phase = Q1; 
+achievement input 
+enabled 
+8 Employee Enters Q1 Actual Achievement + selects 
+Status per goal 
+Actuals saved; progress 
+score computed by UoM 
+formula 
+9 Manager Reviews team Q1 progress; adds Check-in 
+Comment 
+Comment saved with 
+timestamp; visible in 
+audit/report 
+10 Admin Repeats for Q2 (Oct), Q3 (Jan), Q4 (Mar/Apr) Cycle phases advance; 
+historical data preserved 
+11 Admin Triggers Achievement Report export 
+(CSV/Excel) 
+Report generated with all 
+employees' planned vs. 
+actual 
+12 Admin Closes annual cycle; data archived Cycle status: CLOSED; 
+all data frozen 
+ 
+4.3 Shared Data Points Between Roles 
+• Goal Sheet: Employees create it; Managers read/edit during approval; Admin can view and unlock  
+• Actual Achievements: Employee enters; Manager views in check-in; Admin sees in reports 
+• Check-in Comments: Manager writes; visible in manager dashboard and Admin audit logs  
+• Shared Goals: Admin/Manager creates and pushes; all linked employees see same Title/Target; 
+actuals from primary owner propagate to all linked sheets 
+• Completion Status: Employee updates per-goal status; Manager and Admin see on dashboards 
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 9 
+5. Architecture Plan 
+5.1 System Architecture Overview 
+MERN Stack: MongoDB · Express.js · React.js · Node.js, hosted on a cloud provider.  
+ 
+Layer Technology Responsibility 
+Frontend React + Vite + Ant Design / 
+MUI 
+Role-based UI rendering, form validation UX, 
+dashboards 
+State 
+Management 
+Redux Toolkit or Zustand User session, role context, cycle phase state 
+API Layer Express.js REST API Business logic, server-side validation, auth 
+middleware 
+Auth JWT + bcrypt (+ optional Azure 
+AD) 
+Role-based access control on every protected 
+route 
+Database MongoDB Atlas (free tier) Document store for goals, users, cycles, audit 
+logs 
+File Export ExcelJS or json2csv Achievement report CSV/Excel generation 
+Hosting Render / Railway / Vercel + 
+Atlas 
+Zero-cost or near-zero hosting for demo 
+Version Control GitHub Required deliverable; use feature branches + 
+PRs 
+ 
+5.2 MongoDB Data Model (Schema Design) 
+Design schemas before writing any application code. The relationships below are critical.  
+ 
+Collections & Key Fields 
+Collection Key Fields Notes 
+users _id, name, email, passwordHash, 
+role, managerId, department 
+role: employee | manager | admin; 
+managerId links org hierarchy 
+cycles _id, year, phase, openDate, 
+closeDate, status 
+phases: GOAL_SETTING | Q1 | Q2 | Q3 | 
+Q4; Admin controls this 
+goalSheets _id, employeeId, cycleId, status, 
+submittedAt, approvedAt, 
+approvedBy 
+status: DRAFT | SUBMITTED | APPROVED 
+| LOCKED; one per employee per cycle 
+goals _id, goalSheetId, thrustArea, title, 
+description, uomType, target, 
+weightage, isShared, 
+primaryOwnerId, sharedFrom 
+isShared + sharedFrom enables sync; read-
+only flags enforced at API level 
+checkIns _id, goalId, employeeId, quarter, 
+actualAchievement, status, 
+progressScore, managerComment, 
+updatedAt 
+One record per goal per quarter; 
+progressScore computed on save 
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 10 
+Collection Key Fields Notes 
+auditLogs _id, entityType, entityId, actor, 
+action, oldValue, newValue, 
+timestamp 
+entityType: goal | goalSheet | checkIn; 
+write-only from application; never delete 
+notifications _id, recipientId, type, message, 
+readAt, createdAt 
+Optional for bonus feature; can use email 
+service instead 
+ 
+Audit Log — Day 1 Priority 
+Build the AuditLog middleware as one of the first pieces of infrastructure. Every POST/PATCH to 
+goals or goalSheets after lock should call createAuditEntry(). It is extremely difficult to retrofit audit 
+logging onto existing routes. 
+ 
+5.3 Business Logic Placement 
+• Weightage validation (sum = 100%, min 10%) → Express middleware on POST /goals and PATCH 
+/goals/:id 
+• Goal count validation (max 8) → Mongoose pre-save hook on Goal model 
+• Goal locking enforcement → Auth middleware: check goalSheet.status === LOCKED before any 
+write 
+• Shared goal read-only fields → API-level field filter: strip title and target from PATCH body if 
+goal.isShared 
+• UoM score computation → Pure utility function called in checkIn pre-save hook; store computed 
+score in DB 
+• Phase time-gating → Middleware that reads active cycle phase; blocks writes outside valid phase 
+window 
+• Audit trail → Post-save hook or explicit call in every controller that modifies a locked entity  
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 11 
+6. Feature Prioritization & Time-Boxing 
+6.1 Development Phase Plan 
+Recommended timeline assumes a 24–48 hour hackathon sprint. Adjust proportionally for longer formats. 
+ 
+Phase Block Deliverables Time Budget 
+0 Setup & 
+Foundation 
+Repo, project scaffolding, MongoDB Atlas, 
+auth (JWT), role middleware, User + Cycle 
+models 
+~10% of time 
+1 Goal Creation 
+(Phase 1) 
+GoalSheet + Goal models, employee goal 
+CRUD, all validation rules, submission flow 
+~25% of time 
+2 Approval 
+Workflow 
+Manager review UI, inline edit, approve/return 
+flow, goal locking, shared goals push 
+~20% of time 
+3 Check-ins & 
+Scores (Phase 2) 
+CheckIn model, quarterly input UI, UoM 
+formula engine, manager check-in comment, 
+progress display 
+~20% of time 
+4 Reports & Audit CSV/Excel export, completion dashboard, 
+Admin audit log view, cycle management UI 
+~10% of time 
+5 Testing & Bug Fix End-to-end smoke tests for all 3 role journeys, 
+edge case testing for UoM, demo data seed 
+script 
+~10% of time 
+6 Bonus Features ONLY if Phases 1–5 are complete: Email 
+notifications, Escalation module, or Analytics 
+charts 
+~5% of time 
+ 
+Internal Deadline Rule 
+Set an internal deadline to complete all must-have features at 80% of total available time. The final 
+20% is for bug fixing, polish, demo prep, and architecture documentation. Do NOT start bonus 
+features before this internal deadline is met. 
+ 
+6.2 Suggested Team Task Assignment 
+Role Primary Responsibilities Collaboration Touchpoints 
+Frontend Dev 
+1 
+Employee-facing UI: goal creation 
+form, check-in input, status updates 
+Coordinate API contract with Backend Dev 
+1 for goal CRUD 
+Frontend Dev 
+2 
+Manager + Admin UI: approval 
+dashboard, team view, cycle config, 
+audit log, reports 
+Coordinate with Backend Dev 2 for approval 
+& reporting endpoints 
+Backend Dev 
+1 
+Auth system, Goal + GoalSheet APIs, 
+validation middleware, UoM score 
+engine, shared goal logic 
+Provide API docs (Postman collection) to 
+Frontend Dev 1 early 
+Backend Dev 
+2 
+CheckIn APIs, audit log infrastructure, 
+export service (CSV/Excel), cycle 
+management API 
+Sync with Backend Dev 1 on shared 
+middleware; merge frequently 
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 12 
+Role Primary Responsibilities Collaboration Touchpoints 
+Full Stack / 
+Lead 
+Architecture setup, DB schema, 
+deployment, integration, code 
+reviews, demo data seeding 
+Own the integration branch; resolve 
+conflicts; own demo environment 
+ 
+6.3 Code Integration Protocol 
+• Use feature branches: feature/goal-creation, feature/manager-approval, feature/check-ins, 
+feature/reports 
+• Merge to main every 4–6 hours during the hackathon to avoid large conflicts 
+• Agree on API contracts (routes, request/response shapes) before parallel development begins — 
+document in a shared Notion or README 
+• Run the demo seed script on every merge to main to verify the full journey still works end -to-end 
+• One person owns the deployment pipeline — push to hosting after every successful main merge 
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 13 
+7. Risk Register & Mitigation 
+Identified risks based on BRD complexity and common hackathon failure modes.  
+ 
+Risk Likelihood Impact Mitigation 
+Weightage validation 
+bypassed via API 
+HIGH HIGH Add Mongoose validator + Express 
+middleware. Write a test that sends 99% and 
+verifies rejection. 
+UoM formula division by 
+zero crashes 
+MEDIUM HIGH Add guard: if denominator === 0, return N/A or 
+0. Unit-test all 4 formulas with edge inputs. 
+Shared goal sync breaks 
+on actual update 
+MEDIUM HIGH On primaryOwner checkIn save, query all 
+linked goalIds and propagate actuals via a 
+background loop. 
+Audit log missing for post-
+lock edits 
+HIGH HIGH Build AuditLog middleware in Week 0; attach 
+to all goal/goalSheet write routes immediately. 
+CSV/Excel export not 
+working at demo time 
+MEDIUM MEDIUM Implement and test export early (Phase 4). 
+Use ExcelJS — it handles streaming cleanly. 
+Goal locking not enforced 
+server-side 
+LOW HIGH Middleware: check goalSheet.status === 
+LOCKED on every PATCH/DELETE to goals. 
+Demo environment crashes 
+during presentation 
+LOW VERY 
+HIGH 
+Keep a local backup. Seed demo data ahead 
+of time. Use stable hosting (Railway or 
+Render). 
+Time overrun on bonus 
+features 
+HIGH MEDIUM Hard cut-off rule: no bonus work until all must-
+haves pass smoke test. Track with a visible 
+timer. 
+Frontend and backend API 
+contract mismatch 
+MEDIUM MEDIUM Share Postman collection before parallel dev. 
+Use agreed JSON shapes documented in 
+README. 
+Missing role-based route 
+protection 
+LOW HIGH Write a role middleware factory: 
+requireRole("admin") applied per route. Test 
+with wrong-role tokens. 
+ 
+  
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 14 
+8. Pre-Demo Checklist 
+Run this checklist 30 minutes before the evaluation presentation. 
+ 
+8.1 Functionality Checklist 
+☐ Employee can log in and view their role-specific dashboard Must-Have 
+☐ Employee can create a new goal with all UoM types tested Must-Have 
+☐ System rejects weightage != 100% with clear error message Must-Have 
+☐ System rejects more than 8 goals with clear error message Must-Have 
+☐ Employee can submit goal sheet; status changes to SUBMITTED Must-Have 
+☐ Manager can log in and see team's submitted goal sheets Must-Have 
+☐ Manager can edit target/weightage inline and approve Must-Have 
+☐ Approved goals are locked; employee cannot edit them Must-Have 
+☐ Manager can return goals for rework with a comment Must-Have 
+☐ Admin can push a shared goal to selected employees Must-Have 
+☐ Shared goal recipients see title/target as read-only Must-Have 
+☐ Employee can enter Q1 actuals and select status per goal Must-Have 
+☐ Progress score is computed correctly for all 4 UoM types Must-Have 
+☐ Manager can add check-in comment for each team member Must-Have 
+☐ Admin can export Achievement Report as CSV or Excel Must-Have 
+☐ Admin can view Completion Dashboard with real-time status Must-Have 
+☐ Admin can view Audit Log showing post-lock changes Must-Have 
+☐ Admin can unlock a goal and re-lock it (exception handling) Must-Have 
+☐ All three role journeys work end-to-end without errors Critical 
+ 
+8.2 Submission Deliverables Checklist 
+☐ Live / hosted demo URL is accessible from a browser 
+☐ GitHub repository link submitted before deadline 
+☐ Architecture diagram (PDF or image) is complete and accurate 
+☐ Login credentials for Employee, Manager, and Admin roles are ready 
+☐ Demo data is pre-seeded; no need for manual entry during presentation 
+☐ README includes setup instructions and architecture summary 
+AtomQuest Hackathon 1.0  ·  Goal Setting & Tracking Portal  ·  Analysis Report 
+Confidential — Internal Use Only Page 15 
+ 
