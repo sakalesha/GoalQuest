@@ -30,7 +30,7 @@ const seed = async () => {
     // Create Admin
     const admin = await User.create({
       name: 'System Admin',
-      email: 'admin@atomquest.com',
+      email: 'admin@goalquest.com',
       passwordHash: pwd,
       role: 'admin',
       department: 'HR'
@@ -39,7 +39,7 @@ const seed = async () => {
     // Create Managers
     const m1 = await User.create({
       name: 'Manager One',
-      email: 'm1@atomquest.com',
+      email: 'm1@goalquest.com',
       passwordHash: pwd,
       role: 'manager',
       department: 'Engineering'
@@ -47,7 +47,7 @@ const seed = async () => {
 
     const m2 = await User.create({
       name: 'Manager Two',
-      email: 'm2@atomquest.com',
+      email: 'm2@goalquest.com',
       passwordHash: pwd,
       role: 'manager',
       department: 'Sales'
@@ -58,7 +58,7 @@ const seed = async () => {
     for (let i = 1; i <= 4; i++) {
       const emp = await User.create({
         name: `Employee ${i}`,
-        email: `emp${i}@atomquest.com`,
+        email: `emp${i}@goalquest.com`,
         passwordHash: pwd,
         role: 'employee',
         managerId: i <= 2 ? m1._id : m2._id,
@@ -82,7 +82,7 @@ const seed = async () => {
       const sheet = await GoalSheet.create({
         employeeId: emp._id,
         cycleId: cycle._id,
-        status: emp.email === 'emp1@atomquest.com' ? 'DRAFT' : (emp.email === 'emp2@atomquest.com' ? 'SUBMITTED' : 'APPROVED')
+        status: emp.email === 'emp1@goalquest.com' ? 'DRAFT' : (emp.email === 'emp2@goalquest.com' ? 'SUBMITTED' : 'APPROVED')
       });
 
       await Goal.create({
