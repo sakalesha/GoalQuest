@@ -11,18 +11,12 @@ import AuditLog from './models/AuditLog.js';
 
 dotenv.config();
 
-const seed = async () => {
+export const runSeed = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/atomquest');
-    console.log('Connected to DB for seeding...');
+    const userCount = await User.countDocuments();
+    if (userCount > 0) return; // DB is already seeded!
 
-    // Clear existing
-    await User.deleteMany({});
-    await Cycle.deleteMany({});
-    await GoalSheet.deleteMany({});
-    await Goal.deleteMany({});
-    await CheckIn.deleteMany({});
-    await AuditLog.deleteMany({});
+    console.log('Database empty. Seeding demo data...');
 
     const salt = await bcrypt.genSalt(10);
     const pwd = await bcrypt.hash('password123', salt);
@@ -121,11 +115,15 @@ const seed = async () => {
     }
 
     console.log('Seeding complete!');
-    process.exit();
   } catch (err) {
-    console.error(err);
-    process.exit(1);
+    console.error('Seeding failed:', err);
   }
 };
 
-seed();
+// If run directly via CLI
+if (process.argv[1] && process.argv[1].endsWith('seed.js')) {
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/atomquest')
+    .then(() => runSeed())
+    .then(() => process.exit(0))
+    .catch(err => { console.error(err); process.exit(1); });
+}
