@@ -14,11 +14,11 @@ const { Title, Text } = Typography;
 const AdminDashboard = () => {
   return (
     <Layout className="min-h-screen bg-gray-50">
-      <Content className="p-8">
+      <Content className="p-4 md:p-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <div>
-            <Title level={2} className="mb-0">Administrator Governance</Title>
-            <Text type="secondary">System configuration, compliance monitoring and audit trails</Text>
+            <Title level={2} className="mb-0 text-xl md:text-3xl">Administrator Governance</Title>
+            <Text type="secondary" className="text-sm">System configuration, compliance monitoring and audit trails</Text>
           </div>
 
           <Card variant="borderless" className="shadow-none bg-transparent" styles={{ body: { padding: 0 } }}>

@@ -78,15 +78,15 @@ const EmployeeDashboard = () => {
 
   return (
     <Layout className="min-h-screen bg-gray-100">
-      <Content className="p-8">
+      <Content className="p-4 md:p-8">
         <div className="max-w-6xl mx-auto space-y-6">
-          <div className="flex justify-between items-end">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end space-y-4 sm:space-y-0">
             <div>
-              <Title level={2} className="mb-0">My Performance Portal</Title>
-              <Text type="secondary">Manage your goals and quarterly check-ins</Text>
+              <Title level={2} className="mb-0 text-xl md:text-3xl">My Performance Portal</Title>
+              <Text type="secondary" className="text-sm">Manage your goals and quarterly check-ins</Text>
             </div>
             {sheet?.status === 'DRAFT' && (
-              <Space>
+              <Space wrap>
                 <Button 
                   type="primary" 
                   icon={<Plus size={16} />} 
@@ -110,7 +110,7 @@ const EmployeeDashboard = () => {
             )}
           </div>
 
-          <Card>
+          <Card className="overflow-hidden">
             <Tabs 
               defaultActiveKey="1"
               items={[
@@ -132,23 +132,24 @@ const EmployeeDashboard = () => {
                   disabled: sheet?.status === 'DRAFT',
                   children: (
                     <div className="space-y-4">
-                      <div className="flex space-x-2">
+                      <div className="flex flex-wrap gap-2">
                         {['Q1', 'Q2', 'Q3', 'Q4'].map(q => (
                           <Button 
                             key={q} 
                             type={currentQuarter === q ? 'primary' : 'default'}
                             onClick={() => setCurrentQuarter(q)}
+                            className="flex-1 sm:flex-none"
                           >
                             {q}
                           </Button>
                         ))}
                       </div>
                       <Alert 
-                        title={`Currently recording progress for ${currentQuarter}`} 
+                        message={`Currently recording progress for ${currentQuarter}`} 
                         type="info" 
                         showIcon 
                       />
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {goals.map(goal => (
                           <Card 
                             key={goal._id} 

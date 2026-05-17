@@ -93,6 +93,7 @@ const GoalList = ({ goals, onEdit, onDelete, sheetStatus }) => {
         dataSource={goals} 
         rowKey="_id" 
         pagination={false}
+        scroll={{ x: 800 }}
         footer={() => (
           <div className="flex justify-between items-center px-4">
             <Text strong>Goal Count: {goals.length} / 8</Text>

@@ -105,6 +105,8 @@ export const runSeed = async () => {
         // Create a check-in for approved sheets
         await CheckIn.create({
           goalId: g2._id,
+          employeeId: emp._id,
+          cycleId: cycle._id,
           quarter: 'Q1',
           actualAchievement: 0,
           status: 'COMPLETED',

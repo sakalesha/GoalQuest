@@ -69,7 +69,7 @@ const CheckInForm = ({ visible, onCancel, goal, quarter }) => {
       destroyOnHidden
     >
       <Card className="mb-4 bg-gray-50 border-none">
-        <Descriptions title="Goal Definition" column={2} size="small">
+        <Descriptions title="Goal Definition" column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }} size="small">
           <Descriptions.Item label="Title">{goal.title}</Descriptions.Item>
           <Descriptions.Item label="UoM">{goal.uomType}</Descriptions.Item>
           <Descriptions.Item label="Target">
@@ -80,7 +80,7 @@ const CheckInForm = ({ visible, onCancel, goal, quarter }) => {
       </Card>
 
       <Form form={form} layout="vertical">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Form.Item 
             name="actualAchievement" 
             label="Actual Achievement" 

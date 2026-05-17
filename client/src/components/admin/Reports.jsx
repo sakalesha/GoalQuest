@@ -43,18 +43,18 @@ const Reports = () => {
 
   return (
     <div className="space-y-6">
-      <Row gutter={16}>
-        <Col span={8}>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} sm={12} md={8}>
           <Card variant="borderless" className="shadow-sm">
-            <Statistic title="Total Employees" value={stats.totalEmployees} prefix={<Users size={20} />} />
+            <Statistic title="Total Employees" value={stats.totalEmployees} prefix={<Users size={20} className="mr-2" />} />
           </Card>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={12} md={8}>
           <Card variant="borderless" className="shadow-sm">
-            <Statistic title="Approved Sheets" value={stats.approved} suffix={`/ ${stats.totalEmployees}`} prefix={<CheckCircle2 size={20} />} />
+            <Statistic title="Approved Sheets" value={stats.approved} suffix={`/ ${stats.totalEmployees}`} prefix={<CheckCircle2 size={20} className="mr-2" />} />
           </Card>
         </Col>
-        <Col span={8}>
+        <Col xs={24} sm={24} md={8}>
           <Card variant="borderless" className="bg-blue-600 text-white shadow-sm">
             <div className="flex justify-between items-center">
               <div>
@@ -68,11 +68,21 @@ const Reports = () => {
       </Row>
 
       <Card 
-        title="Organization Completion Rate" 
+        title={<span className="text-base md:text-lg">Organization Completion Rate</span>} 
         className="shadow-sm"
-        extra={<Button type="primary" icon={<Download size={16} />} loading={exporting} onClick={handleExport}>Download Achievement Report</Button>}
+        extra={
+          <Button 
+            type="primary" 
+            icon={<Download size={16} />} 
+            loading={exporting} 
+            onClick={handleExport}
+            className="hidden sm:inline-flex"
+          >
+            Export
+          </Button>
+        }
       >
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
             <h4 className="mb-4 font-medium">Goal Setting Phase</h4>
             <div className="space-y-4">
@@ -100,6 +110,17 @@ const Reports = () => {
               ))}
             </div>
           </div>
+        </div>
+        <div className="mt-6 sm:hidden">
+          <Button 
+            type="primary" 
+            icon={<Download size={16} />} 
+            loading={exporting} 
+            onClick={handleExport}
+            block
+          >
+            Download Achievement Report
+          </Button>
         </div>
       </Card>
     </div>

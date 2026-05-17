@@ -187,6 +187,7 @@ const ApprovalDashboard = () => {
         rowKey="_id" 
         loading={loading}
         pagination={{ pageSize: 5 }}
+        scroll={{ x: 700 }}
       />
 
       <Modal
@@ -194,8 +195,10 @@ const ApprovalDashboard = () => {
         open={returnModalVisible}
         onOk={handleReturn}
         onCancel={() => setReturnModalVisible(false)}
+        width={500}
+        centered
       >
-        <Typography.Text type="secondary" className="block mb-2">
+        <Typography.Text type="secondary" className="block mb-2 text-sm">
           Explain what needs to be corrected in the goal sheet.
         </Typography.Text>
         <Input.TextArea 
@@ -231,13 +234,16 @@ const ApprovalDashboard = () => {
             </React.Fragment>
           )
         ]}
-        width={800}
+        width={900}
+        centered
+        className="max-w-[95vw]"
       >
         <Table 
           loading={loading}
           dataSource={currentGoals}
           rowKey="_id"
           pagination={false}
+          scroll={{ x: 600 }}
           columns={[
             { title: 'Goal Title', dataIndex: 'title', key: 'title', render: (t) => <Text strong>{t}</Text> },
             { title: 'UoM', dataIndex: 'uomType', key: 'uom' },

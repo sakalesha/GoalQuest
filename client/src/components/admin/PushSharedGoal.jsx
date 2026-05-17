@@ -49,7 +49,7 @@ const PushSharedGoal = () => {
   return (
     <Card title="Push Shared Goal / Departmental KPI" variant="borderless">
       <Form form={form} layout="vertical" onFinish={onFinish}>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-4">
             <Form.Item name="title" label="Goal Title" rules={[{ required: true }]}>
               <Input placeholder="e.g. Increase System Uptime" />
@@ -59,7 +59,7 @@ const PushSharedGoal = () => {
               <Input.TextArea rows={3} placeholder="Detailed explanation of the KPI" />
             </Form.Item>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Form.Item name="uomType" label="UoM" rules={[{ required: true }]}>
                 <Select placeholder="Type">
                   <Select.Option value="MAX">MAX (Higher is better)</Select.Option>
@@ -73,7 +73,7 @@ const PushSharedGoal = () => {
               </Form.Item>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Form.Item name="weightage" label="Weightage (%)" rules={[{ required: true }]}>
                 <InputNumber min={10} max={100} className="w-full" />
               </Form.Item>
@@ -83,12 +83,12 @@ const PushSharedGoal = () => {
             </div>
           </div>
 
-          <div>
+          <div className="overflow-x-auto">
             <Form.Item label="Select Recipient Employees" required>
               <Transfer
                 dataSource={employees}
                 showSearch
-                listStyle={{ height: 350, width: '100%' }}
+                listStyle={{ height: 350, width: '100%', minWidth: 250 }}
                 targetKeys={targetKeys}
                 onChange={setTargetKeys}
                 render={item => item.title}

@@ -83,7 +83,7 @@ const GoalForm = ({ visible, onCancel, onSuccess, goal, sheetId, totalWeightageU
       )}
 
       <Form form={form} layout="vertical">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Form.Item name="thrustArea" label="Thrust Area" rules={[{ required: true }]}>
             <Select placeholder="Select Thrust Area">
               <Select.Option value="Quality">Quality</Select.Option>
@@ -112,7 +112,7 @@ const GoalForm = ({ visible, onCancel, onSuccess, goal, sheetId, totalWeightageU
           <Input.TextArea rows={3} placeholder="Provide details on how the goal achieved" />
         </Form.Item>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Form.Item name="target" label="Target Value" rules={[{ required: true }]}>
             <InputNumber className="w-full" disabled={isShared || uomType === 'ZERO'} 
               placeholder={uomType === 'ZERO' ? 'Fixed at 0' : 'Value'} 

@@ -76,6 +76,7 @@ const AuditLog = () => {
         loading={loading}
         size="small"
         pagination={{ pageSize: 15 }}
+        scroll={{ x: 700 }}
       />
     </Card>
   );

@@ -35,21 +35,21 @@ const ManagerDashboard = () => {
 
   return (
     <Layout className="min-h-screen bg-gray-50">
-      <Content className="p-8">
+      <Content className="p-4 md:p-8">
         <div className="max-w-7xl mx-auto space-y-6">
-          <div className="flex justify-between items-end">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end space-y-4 sm:space-y-0">
             <div>
-              <Title level={2} className="mb-0">Team Management Dashboard</Title>
-              <Text type="secondary">Review and approve your direct reports' performance goals</Text>
+              <Title level={2} className="mb-0 text-xl md:text-3xl">Team Management Dashboard</Title>
+              <Text type="secondary" className="text-sm">Review and approve your direct reports' performance goals</Text>
             </div>
           </div>
 
-          <Row gutter={16}>
+          <Row gutter={[16, 16]}>
             {stats.map((s, idx) => (
-              <Col span={8} key={idx}>
+              <Col xs={24} sm={12} md={8} key={idx}>
                 <Card variant="borderless" className="shadow-sm">
                   <Statistic 
-                    title={<span className="flex items-center space-x-2">{s.icon} <span className="ml-1">{s.title}</span></span>}
+                    title={<span className="flex items-center space-x-2 font-medium">{s.icon} <span className="ml-1">{s.title}</span></span>}
                     value={s.value} 
                   />
                 </Card>
@@ -57,7 +57,7 @@ const ManagerDashboard = () => {
             ))}
           </Row>
 
-          <Card variant="borderless" className="shadow-sm">
+          <Card variant="borderless" className="shadow-sm overflow-hidden">
             <Tabs 
               defaultActiveKey="1"
               items={[
